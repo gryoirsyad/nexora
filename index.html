@@ -1,12 +1,11 @@
 
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#07090d">
-<meta name="description" content="NEXORA — ruang kerja digital yang menyatukan ide, fokus, dan progres dalam satu tempat.">
-<title>NEXORA — Make room for what matters</title>
+<meta name="theme-color" content="#080b12">
+<title>NEXORA — Beyond Digital</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,1020 +13,725 @@
 
 <style>
 :root {
-  --bg: #07090d;
-  --panel: #0d1119;
-  --line: rgba(255,255,255,.1);
-  --muted: #929baa;
-  --text: #f4f7fb;
-  --blue: #397bff;
-  --cyan: #72c7ff;
-  --max: 1180px;
+  --bg: #080b12;
+  --surface: #101622;
+  --surface2: #151e2d;
+  --blue: #477cff;
+  --cyan: #52d8ff;
+  --white: #f5f7ff;
+  --muted: #8994a9;
+  --border: rgba(255,255,255,.09);
+  --header: 76px;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-behavior:smooth;
+  scroll-padding-top:calc(var(--header) + 20px);
 }
 
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: "DM Sans", sans-serif;
-  overflow-x: hidden;
+  background:var(--bg);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
 }
 
-body:before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background:
-    radial-gradient(ellipse at 50% -15%, rgba(40,105,255,.18), transparent 48%),
-    radial-gradient(ellipse at 90% 55%, rgba(0,119,255,.07), transparent 35%);
+a { text-decoration:none; color:inherit; }
+button { font:inherit; cursor:pointer; }
+
+.container {
+  width:min(1160px, calc(100% - 48px));
+  margin:auto;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+section { padding:110px 0; }
 
-button, input {
-  font: inherit;
-}
-
-.wrap {
-  width: min(var(--max), calc(100% - 48px));
-  margin: auto;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: #9bbcff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .17em;
-  text-transform: uppercase;
-}
-
-.eyebrow:before {
-  content: "";
-  width: 22px;
-  height: 1px;
-  background: var(--blue);
-}
-
-.section {
-  padding: 112px 0;
-}
-
-.section-head {
-  max-width: 650px;
-  margin-bottom: 46px;
-}
-
-.section-head h2 {
-  font: 600 clamp(34px,5vw,56px)/1.05 "Space Grotesk",sans-serif;
-  letter-spacing: -.045em;
-  margin: 18px 0;
-}
-
-.section-head p {
-  color: var(--muted);
-  line-height: 1.8;
-  font-size: 16px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  border: 1px solid transparent;
-  border-radius: 7px;
-  padding: 14px 20px;
-  font-weight: 700;
-  font-size: 13px;
-  transition: .25s;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: var(--blue);
-  color: white;
-  box-shadow: 0 8px 30px rgba(57,123,255,.25);
-}
-
-.btn-primary:hover {
-  background: #5590ff;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(57,123,255,.38);
-}
-
-.btn-ghost {
-  border-color: var(--line);
-  background: rgba(255,255,255,.025);
-}
-
-.btn-ghost:hover {
-  border-color: rgba(114,166,255,.5);
-  background: rgba(255,255,255,.06);
-}
-
-.arrow {
-  font-size: 17px;
-  line-height: 0;
-}
-
-/* NAVIGATION */
-
-.nav {
-  height: 78px;
-  position: fixed;
-  z-index: 20;
-  top: 0;
-  left: 0;
-  right: 0;
-  border-bottom: 1px solid transparent;
-  transition: .3s;
-  background: rgba(7,9,13,.55);
-  backdrop-filter: blur(18px);
-}
-
-.nav.scrolled {
-  border-color: var(--line);
-  background: rgba(7,9,13,.88);
+.navbar {
+  height:var(--header);
+  position:fixed;
+  inset:0 0 auto;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  background:rgba(8,11,18,.78);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
 }
 
 .nav-inner {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:min(1160px,calc(100% - 48px));
+  margin:auto;
 }
 
 .logo {
-  font: 700 22px "Space Grotesk",sans-serif;
-  letter-spacing: .12em;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:-1.5px;
 }
 
-.logo span {
-  color: var(--blue);
-}
+.logo span { color:var(--blue); }
 
 .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  color: #aeb6c4;
-  font-size: 12px;
+  display:flex;
+  align-items:center;
+  gap:34px;
+  color:var(--muted);
+  font-size:13px;
 }
 
-.nav-links a:hover {
-  color: white;
+.nav-links a:hover { color:white; }
+
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 23px;
+  border-radius:9px;
+  font-size:13px;
+  font-weight:700;
+  transition:.3s;
+  border:1px solid transparent;
 }
 
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.btn-primary {
+  color:white;
+  background:linear-gradient(110deg,#477cff,#2861e8);
+  box-shadow:0 5px 30px rgba(71,124,255,.22);
 }
 
-.nav-actions .btn {
-  padding: 11px 16px;
+.btn-primary:hover {
+  transform:translateY(-3px);
+  box-shadow:0 10px 35px rgba(71,124,255,.4);
 }
 
-.menu-btn {
-  display: none;
-  background: none;
-  border: 0;
-  color: white;
-  font-size: 24px;
+.btn-outline {
+  border-color:var(--border);
+  background:rgba(255,255,255,.025);
+}
+
+.btn-outline:hover { background:var(--surface2); }
+
+.menu-toggle {
+  display:none;
+  color:white;
+  background:none;
+  border:0;
+  font-size:25px;
 }
 
 /* HERO */
 
 .hero {
-  min-height: 790px;
-  padding: 166px 0 80px;
-  display: flex;
-  align-items: center;
-  position: relative;
+  min-height:100vh;
+  padding-top:calc(var(--header) + 100px);
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.05fr;
-  gap: 42px;
-  align-items: center;
+.hero::before {
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  background:rgba(40,105,255,.17);
+  filter:blur(130px);
+  top:5%;
+  right:-15%;
+  pointer-events:none;
 }
 
-.hero-copy {
-  position: relative;
-  z-index: 2;
+.hero-content {
+  position:relative;
+  z-index:2;
+  max-width:760px;
 }
 
-.hero h1 {
-  font: 600 clamp(52px,7vw,88px)/.98 "Space Grotesk",sans-serif;
-  letter-spacing: -.065em;
-  margin: 24px 0;
-}
-
-.hero h1 .gradient {
-  background: linear-gradient(100deg,#fff 12%,#a7c8ff 58%,#397bff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero-copy > p {
-  max-width: 470px;
-  color: #a2adbd;
-  line-height: 1.8;
-  font-size: 16px;
-  margin: 0 0 30px;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.micro-proof {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 36px;
-  color: #8c96a6;
-  font-size: 11px;
-}
-
-.avatars {
-  display: flex;
-  padding-left: 5px;
-}
-
-.avatars i {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  border: 2px solid var(--bg);
-  margin-left: -6px;
-  background: linear-gradient(135deg,#b6d1ff,#2452aa);
-}
-
-.avatars i:nth-child(2) {
-  background: linear-gradient(135deg,#e5c6ad,#7c5363);
-}
-
-.avatars i:nth-child(3) {
-  background: linear-gradient(135deg,#c6e4d8,#367a71);
-}
-
-.avatars i:nth-child(4) {
-  background: linear-gradient(135deg,#f2d39d,#9b6539);
-}
-
-/* HERO VISUAL */
-
-.visual {
-  height: 500px;
-  position: relative;
-  perspective: 1000px;
-}
-
-.orb {
-  position: absolute;
-  width: 370px;
-  height: 370px;
-  border-radius: 50%;
-  top: 48px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: radial-gradient(
-    circle at 35% 28%,
-    rgba(105,164,255,.32),
-    rgba(26,82,183,.12) 34%,
-    rgba(7,9,13,0) 68%
-  );
-  filter: blur(2px);
-}
-
-.orbit {
-  position: absolute;
-  border: 1px solid rgba(92,150,255,.22);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%) rotate(-24deg);
-  width: 450px;
-  height: 180px;
-}
-
-.orbit.two {
-  transform: translate(-50%,-50%) rotate(55deg);
-  width: 400px;
-  height: 165px;
-  border-color: rgba(92,150,255,.13);
-}
-
-.core {
-  position: absolute;
-  width: 160px;
-  height: 160px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  border-radius: 38px;
-  background: linear-gradient(145deg,#1d3d77,#0c1426 65%);
-  border: 1px solid rgba(130,176,255,.35);
-  box-shadow:
-    0 0 100px rgba(42,112,255,.28),
-    inset 0 1px rgba(255,255,255,.18);
-  display: grid;
-  place-items: center;
-  rotate: -12deg;
-}
-
-.core-mark {
-  font: 700 65px "Space Grotesk";
-  color: #dceaff;
-  text-shadow: 0 0 30px #397bff;
-}
-
-.float-card {
-  position: absolute;
-  background: linear-gradient(145deg,rgba(20,29,44,.96),rgba(10,15,24,.96));
-  border: 1px solid rgba(157,187,239,.17);
-  border-radius: 12px;
-  box-shadow: 0 24px 70px rgba(0,0,0,.4);
-  padding: 16px;
-  backdrop-filter: blur(16px);
-}
-
-.float-card small {
-  color: #8795aa;
-  font-size: 10px;
-}
-
-.float-card strong {
-  display: block;
-  font: 600 14px "Space Grotesk";
-  margin-top: 8px;
-}
-
-.card-task {
-  width: 190px;
-  top: 55px;
-  left: 0;
-  transform: rotate(-7deg);
-}
-
-.task-line {
-  height: 5px;
-  background: #202d41;
-  border-radius: 5px;
-  margin-top: 12px;
-  overflow: hidden;
-}
-
-.task-line:after {
-  content: "";
-  display: block;
-  width: 72%;
-  height: 100%;
-  background: var(--blue);
-  border-radius: 5px;
-}
-
-.card-stat {
-  right: 0;
-  top: 175px;
-  width: 175px;
-  transform: rotate(6deg);
-}
-
-.stat-value {
-  font: 600 28px "Space Grotesk" !important;
-  color: #9cc2ff;
-}
-
-.card-note {
-  bottom: 45px;
-  left: 45px;
-  width: 205px;
-  transform: rotate(4deg);
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:#82a9ff;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:28px;
 }
 
 .dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #52d6a2;
-  margin-right: 6px;
-  box-shadow: 0 0 10px #52d6a2;
+  width:7px;
+  height:7px;
+  background:var(--cyan);
+  border-radius:50%;
+  box-shadow:0 0 12px var(--cyan);
 }
 
-/* TRUST */
-
-.trust {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 25px 0;
+h1 {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(52px,8vw,100px);
+  line-height:.99;
+  letter-spacing:-6px;
+  font-weight:700;
 }
 
-.trust-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  color: #697486;
-  font-size: 11px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
+.gradient-text {
+  background:linear-gradient(100deg,#fff 5%,#73a3ff 48%,#52d8ff);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
-.trust-logos {
-  display: flex;
-  gap: 42px;
-  align-items: center;
-  color: #a0aabc;
-  font: 600 15px "Space Grotesk";
-  letter-spacing: .04em;
+.hero-description {
+  max-width:510px;
+  margin:28px 0 34px;
+  color:var(--muted);
+  line-height:1.9;
+  font-size:15px;
+}
+
+.hero-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+}
+
+.hero-meta {
+  display:flex;
+  gap:35px;
+  margin-top:65px;
+  flex-wrap:wrap;
+}
+
+.meta-item strong {
+  display:block;
+  font-family:'Space Grotesk';
+  font-size:23px;
+}
+
+.meta-item span {
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* ORBIT VISUAL */
+
+.orbit {
+  position:absolute;
+  right:4%;
+  top:50%;
+  transform:translateY(-45%);
+  width:350px;
+  height:350px;
+  border:1px solid rgba(91,145,255,.17);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  pointer-events:none;
+}
+
+.orbit::before,.orbit::after {
+  content:"";
+  position:absolute;
+  border:1px solid rgba(91,145,255,.13);
+  border-radius:50%;
+}
+
+.orbit::before { inset:35px; }
+.orbit::after { inset:75px; }
+
+.orbit-core {
+  width:115px;
+  height:115px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#3974ff,#1a2e6b);
+  box-shadow:0 0 100px rgba(65,117,255,.5);
+  transform:rotate(45deg);
+  animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform:rotate(45deg) translateY(0); }
+  50% { transform:rotate(45deg) translateY(-15px); }
+}
+
+/* SECTION COMMON */
+
+.section-label {
+  color:var(--blue);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+.section-title {
+  font-family:'Space Grotesk';
+  font-size:clamp(35px,5vw,58px);
+  line-height:1.1;
+  letter-spacing:-2.5px;
+  max-width:650px;
+}
+
+.section-description {
+  color:var(--muted);
+  line-height:1.8;
+  max-width:520px;
+  margin-top:20px;
+  font-size:14px;
 }
 
 /* FEATURES */
 
+.features {
+  background:linear-gradient(180deg,transparent,rgba(20,35,65,.2),transparent);
+}
+
 .feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 16px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px;
+  margin-top:55px;
 }
 
-.feature {
-  padding: 30px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: linear-gradient(145deg,rgba(17,24,36,.85),rgba(9,13,20,.8));
-  min-height: 260px;
-  transition: .3s;
+.feature-card {
+  background:linear-gradient(145deg,#131c2b,#0c111b);
+  border:1px solid var(--border);
+  padding:32px;
+  border-radius:15px;
+  min-height:240px;
+  transition:.35s;
 }
 
-.feature:hover {
-  transform: translateY(-6px);
-  border-color: rgba(77,137,255,.42);
-  background: linear-gradient(145deg,rgba(21,35,59,.9),rgba(9,13,20,.8));
+.feature-card:hover {
+  transform:translateY(-8px);
+  border-color:rgba(71,124,255,.55);
+  background:linear-gradient(145deg,#172640,#101622);
 }
 
 .feature-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: rgba(57,123,255,.12);
-  border: 1px solid rgba(91,150,255,.24);
-  display: grid;
-  place-items: center;
-  color: #8db7ff;
-  font-size: 19px;
+  width:45px;
+  height:45px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:rgba(71,124,255,.13);
+  color:#8eb1ff;
+  font-size:21px;
+  margin-bottom:28px;
 }
 
-.feature h3 {
-  font: 600 20px "Space Grotesk";
-  margin: 26px 0 10px;
+.feature-card h3 {
+  font-family:'Space Grotesk';
+  font-size:19px;
+  margin-bottom:12px;
 }
 
-.feature p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
-  margin: 0;
+.feature-card p {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
 }
 
-/* WORKFLOW */
+/* SHOWCASE */
 
-.workflow {
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(17,32,57,.24),
-    transparent
-  );
+.showcase-layout {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:70px;
+  margin-top:55px;
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 0;
-}
-
-.step {
-  padding: 26px 30px 26px 0;
-  position: relative;
-}
-
-.step:not(:last-child):after {
-  content: "";
-  position: absolute;
-  top: 48px;
-  left: 65px;
-  right: 20px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgba(57,123,255,.6),
-    rgba(57,123,255,.04)
-  );
-}
-
-.step-number {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid rgba(86,145,255,.45);
-  background: #101b30;
-  color: #9fc2ff;
-  display: grid;
-  place-items: center;
-  font: 600 13px "Space Grotesk";
-  position: relative;
-  z-index: 1;
-}
-
-.step h3 {
-  font: 600 19px "Space Grotesk";
-  margin: 25px 0 9px;
-}
-
-.step p {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.8;
-  max-width: 290px;
-}
-
-/* BRAND STATEMENT */
-
-.quote-box {
-  padding: 54px;
-  border: 1px solid rgba(102,153,255,.2);
-  border-radius: 16px;
+.showcase-visual {
+  min-height:400px;
+  border-radius:22px;
+  border:1px solid var(--border);
   background:
-    radial-gradient(ellipse at 80% 0,rgba(48,109,232,.16),transparent 55%),
-    #0b1019;
-  text-align: center;
+    radial-gradient(circle at 50% 40%,rgba(71,124,255,.3),transparent 55%),
+    linear-gradient(145deg,#17243b,#0b101a);
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
 }
 
-.quote-mark {
-  font: 700 50px Georgia;
-  color: #5c91ff;
-  line-height: 1;
+.dashboard {
+  width:80%;
+  padding:20px;
+  background:rgba(9,14,24,.85);
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:13px;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+  transform:perspective(900px) rotateY(-9deg) rotateX(5deg);
 }
 
-.quote-box blockquote {
-  max-width: 760px;
-  margin: 20px auto 25px;
-  font: 500 clamp(21px,3vw,31px)/1.45 "Space Grotesk";
-  letter-spacing: -.025em;
+.dash-top {
+  display:flex;
+  justify-content:space-between;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--border);
+  font-size:10px;
+  color:var(--muted);
 }
 
-.quote-person {
-  color: #9aa6b8;
-  font-size: 12px;
+.dash-stat {
+  display:flex;
+  justify-content:space-between;
+  margin-top:23px;
 }
 
-.quote-person strong {
-  color: #e9eef7;
-  display: block;
-  margin-bottom: 5px;
+.dash-stat strong {
+  font-family:'Space Grotesk';
+  font-size:25px;
+}
+
+.dash-stat small {
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+}
+
+.chart {
+  height:110px;
+  display:flex;
+  align-items:end;
+  gap:9px;
+  margin-top:25px;
+}
+
+.chart span {
+  flex:1;
+  background:linear-gradient(0deg,#2861e8,#64baff);
+  border-radius:4px 4px 0 0;
+  opacity:.85;
+}
+
+.story-points {
+  display:grid;
+  gap:25px;
+  margin-top:35px;
+}
+
+.story-item {
+  display:flex;
+  gap:17px;
+}
+
+.story-number {
+  color:var(--blue);
+  font-family:'Space Grotesk';
+  font-size:20px;
+}
+
+.story-item h3 { font-size:16px; margin-bottom:8px; }
+.story-item p { color:var(--muted); font-size:13px; line-height:1.8; }
+
+/* PRICING */
+
+.pricing {
+  background:rgba(16,24,38,.5);
+}
+
+.pricing-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:55px;
+}
+
+.price-card {
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:34px;
+  background:#0e1420;
+}
+
+.price-card.featured {
+  border-color:var(--blue);
+  background:linear-gradient(145deg,#172b4b,#101622);
+  box-shadow:0 0 55px rgba(71,124,255,.1);
+}
+
+.price-card h3 {
+  font-family:'Space Grotesk';
+  font-size:20px;
+}
+
+.price-card .price {
+  font-family:'Space Grotesk';
+  font-size:38px;
+  font-weight:700;
+  margin:25px 0 5px;
+}
+
+.price-card .period {
+  color:var(--muted);
+  font-size:12px;
+}
+
+.price-card ul {
+  list-style:none;
+  margin:30px 0;
+  display:grid;
+  gap:17px;
+  color:#c0c8d8;
+  font-size:13px;
+}
+
+.price-card li::before {
+  content:"✓";
+  color:var(--cyan);
+  margin-right:10px;
+}
+
+.price-card .btn { width:100%; }
+
+/* CTA */
+
+.cta-box {
+  padding:75px 35px;
+  border-radius:22px;
+  text-align:center;
+  border:1px solid rgba(92,140,255,.3);
+  background:
+    radial-gradient(circle at 50% 100%,rgba(50,106,255,.25),transparent 60%),
+    #101a2a;
+}
+
+.cta-box h2 {
+  font-family:'Space Grotesk';
+  font-size:clamp(35px,5vw,55px);
+  letter-spacing:-2px;
+}
+
+.cta-box p {
+  color:var(--muted);
+  margin:20px auto 28px;
+  line-height:1.8;
+  max-width:490px;
+  font-size:14px;
 }
 
 /* FAQ */
 
-.faq-wrap {
-  max-width: 790px;
+.faq-list {
+  max-width:760px;
+  margin:45px auto 0;
 }
 
 .faq-item {
-  border-bottom: 1px solid var(--line);
+  border-bottom:1px solid var(--border);
 }
 
-.faq-q {
-  width: 100%;
-  background: none;
-  border: 0;
-  color: white;
-  text-align: left;
-  padding: 23px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font: 500 16px "Space Grotesk";
-  cursor: pointer;
+.faq-question {
+  width:100%;
+  background:none;
+  border:0;
+  color:white;
+  padding:24px 0;
+  text-align:left;
+  display:flex;
+  justify-content:space-between;
+  font-weight:600;
+  font-size:15px;
 }
 
-.faq-q span:last-child {
-  color: #7eacff;
-  font-size: 22px;
-  transition: .2s;
+.faq-answer {
+  max-height:0;
+  overflow:hidden;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+  transition:max-height .35s ease,padding .35s;
 }
 
-.faq-a {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .3s ease;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
+.faq-item.active .faq-answer {
+  max-height:150px;
+  padding-bottom:22px;
 }
 
-.faq-a p {
-  margin: 0;
-  padding: 0 35px 22px 0;
-}
-
-.faq-item.open .faq-a {
-  max-height: 180px;
-}
-
-.faq-item.open .faq-q span:last-child {
-  transform: rotate(45deg);
-}
-
-/* FINAL CTA */
-
-.final-cta {
-  padding: 35px 0 110px;
-}
-
-.cta-panel {
-  padding: 65px 30px;
-  text-align: center;
-  border: 1px solid rgba(91,145,255,.25);
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at 50% 0,rgba(48,111,255,.2),transparent 65%),
-    #0c111b;
-}
-
-.cta-panel:before {
-  content: "";
-  position: absolute;
-  width: 350px;
-  height: 350px;
-  border: 1px solid rgba(81,140,255,.1);
-  border-radius: 50%;
-  top: -270px;
-  left: calc(50% - 175px);
-  box-shadow:
-    0 0 0 35px rgba(81,140,255,.025),
-    0 0 0 75px rgba(81,140,255,.02);
-}
-
-.cta-panel h2 {
-  font: 600 clamp(34px,5vw,55px)/1.05 "Space Grotesk";
-  letter-spacing: -.05em;
-  max-width: 700px;
-  margin: 18px auto;
-}
-
-.cta-panel p {
-  color: var(--muted);
-  font-size: 14px;
-  margin: 0 auto 27px;
-  max-width: 490px;
-  line-height: 1.8;
-}
+.faq-question span { color:var(--blue); }
 
 /* FOOTER */
 
-.footer {
-  border-top: 1px solid var(--line);
-  padding: 32px 0;
+footer {
+  border-top:1px solid var(--border);
+  padding:45px 0;
 }
 
 .footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  color: #7f8998;
-  font-size: 11px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:25px;
 }
 
 .footer-links {
-  display: flex;
-  gap: 22px;
+  display:flex;
+  gap:25px;
+  color:var(--muted);
+  font-size:12px;
 }
 
-.footer-links a:hover {
-  color: white;
-}
-
-/* ANIMATION */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+.copyright {
+  color:var(--muted);
+  font-size:11px;
+  margin-top:30px;
 }
 
 /* MODAL */
 
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.72);
-  backdrop-filter: blur(10px);
-  display: none;
-  place-items: center;
-  z-index: 50;
-  padding: 20px;
-}
-
-.modal-backdrop.show {
-  display: grid;
-}
-
 .modal {
-  width: min(440px,100%);
-  background: #101722;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 30px;
-  box-shadow: 0 30px 100px #000;
+  position:fixed;
+  inset:0;
+  z-index:200;
+  background:rgba(0,0,0,.8);
+  backdrop-filter:blur(10px);
+  display:none;
+  place-items:center;
+  padding:20px;
 }
 
-.modal h3 {
-  font: 600 25px "Space Grotesk";
-  margin: 0 0 8px;
+.modal.active { display:grid; }
+
+.modal-content {
+  width:min(440px,100%);
+  background:#111a29;
+  border:1px solid var(--border);
+  padding:35px;
+  border-radius:18px;
+  position:relative;
 }
 
-.modal p {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.7;
+.modal-content h2 {
+  font-family:'Space Grotesk';
+  font-size:28px;
+  margin-bottom:10px;
 }
 
-.modal form {
-  display: flex;
-  gap: 8px;
-  margin-top: 20px;
+.modal-content p {
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:25px;
 }
 
-.modal input {
-  min-width: 0;
-  flex: 1;
-  background: #080d15;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 13px;
-  color: white;
-  outline: none;
+.modal-content input {
+  width:100%;
+  padding:15px;
+  background:#080e18;
+  border:1px solid var(--border);
+  border-radius:8px;
+  color:white;
+  margin-bottom:14px;
+  outline:none;
 }
 
-.modal input:focus {
-  border-color: var(--blue);
+.modal-content input:focus {
+  border-color:var(--blue);
 }
 
-.modal-close {
-  float: right;
-  background: none;
-  border: 0;
-  color: #aab4c4;
-  font-size: 22px;
-  cursor: pointer;
+.modal-content button[type="submit"] { width:100%; }
+
+.close-modal {
+  position:absolute;
+  top:15px;
+  right:17px;
+  background:none;
+  border:0;
+  color:white;
+  font-size:23px;
 }
 
-.form-message {
-  font-size: 12px;
-  color: #8db7ff;
-  margin-top: 12px;
-  min-height: 18px;
+/* REVEAL */
+
+.reveal {
+  opacity:0;
+  transform:translateY(35px);
+  transition:opacity .8s ease,transform .8s ease;
 }
 
-/* TABLET */
+.reveal.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.delay-1 { transition-delay:.1s; }
+.delay-2 { transition-delay:.2s; }
 
 @media(max-width:900px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    padding-top: 145px;
-  }
-
-  .hero-copy {
-    text-align: center;
-  }
-
-  .hero-copy > p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-cta,
-  .micro-proof {
-    justify-content: center;
-  }
-
-  .visual {
-    height: 440px;
-    max-width: 620px;
-    width: 100%;
-    margin: auto;
-  }
-
-  .feature-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .trust-inner {
-    flex-direction: column;
-  }
-
-  .trust-logos {
-    gap: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  .orbit { opacity:.25; right:-160px; }
+  .showcase-layout { gap:35px; }
 }
 
-/* MOBILE */
-
-@media(max-width:650px) {
-  .wrap {
-    width: min(100% - 36px,var(--max));
-  }
-
-  .section {
-    padding: 78px 0;
-  }
-
-  .nav {
-    height: 68px;
-  }
+@media(max-width:700px) {
+  :root { --header:68px; }
+  section { padding:80px 0; }
 
   .nav-links {
-    display: none;
-    position: absolute;
-    top: 68px;
-    left: 0;
-    right: 0;
-    background: #0b1019;
-    padding: 22px 24px;
-    border-bottom: 1px solid var(--line);
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
+    display:none;
+    position:absolute;
+    top:68px;
+    left:0;
+    width:100%;
+    background:#0d1421;
+    padding:25px;
+    flex-direction:column;
+    align-items:flex-start;
+    border-bottom:1px solid var(--border);
   }
 
-  .nav-links.open {
-    display: flex;
+  .nav-links.active { display:flex; }
+  .nav-cta { display:none; }
+  .menu-toggle { display:block; }
+
+  h1 { letter-spacing:-3px; }
+  .hero { min-height:90vh; }
+  .hero-meta { gap:25px; margin-top:45px; }
+
+  .feature-grid,.pricing-grid {
+    grid-template-columns:1fr;
   }
 
-  .nav-actions .btn {
-    display: none;
+  .showcase-layout {
+    grid-template-columns:1fr;
   }
 
-  .menu-btn {
-    display: block;
-  }
+  .showcase-visual { min-height:300px; }
 
-  .hero {
-    min-height: auto;
-    padding: 130px 0 55px;
-  }
-
-  .hero h1 {
-    font-size: clamp(48px,14vw,68px);
-  }
-
-  .hero-copy > p {
-    font-size: 14px;
-  }
-
-  .visual {
-    height: 350px;
-    transform: scale(.88);
-    transform-origin: top center;
-    margin-bottom: -35px;
-  }
-
-  .orbit {
-    width: 340px;
-    height: 140px;
-  }
-
-  .orbit.two {
-    width: 320px;
-    height: 130px;
-  }
-
-  .core {
-    width: 125px;
-    height: 125px;
-  }
-
-  .core-mark {
-    font-size: 52px;
-  }
-
-  .card-task {
-    left: -2px;
-    top: 38px;
-    scale: .82;
-    transform-origin: top left;
-  }
-
-  .card-stat {
-    right: -5px;
-    top: 145px;
-    scale: .82;
-    transform-origin: top right;
-  }
-
-  .card-note {
-    left: 5px;
-    bottom: 20px;
-    scale: .82;
-    transform-origin: bottom left;
-  }
-
-  .trust-logos {
-    font-size: 13px;
-    gap: 18px;
-  }
-
-  .feature-grid,
-  .steps {
-    grid-template-columns: 1fr;
-  }
-
-  .feature {
-    min-height: 0;
-  }
-
-  .step {
-    padding: 12px 0 25px;
-  }
-
-  .step:not(:last-child):after {
-    display: none;
-  }
-
-  .quote-box {
-    padding: 38px 22px;
-  }
-
-  .cta-panel {
-    padding: 50px 22px;
-  }
+  .cta-box { padding:55px 22px; }
 
   .footer-inner {
-    flex-direction: column;
-    text-align: center;
+    align-items:flex-start;
+    flex-direction:column;
   }
 
   .footer-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .modal form {
-    flex-direction: column;
+    flex-wrap:wrap;
+    gap:18px;
   }
 }
 
-/* ACCESSIBILITY */
-
 @media(prefers-reduced-motion:reduce) {
-  *,
-  *:before,
-  *:after {
-    scroll-behavior: auto !important;
-    transition: none !important;
-    animation: none !important;
+  *,*::before,*::after {
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
   }
 
   .reveal {
-    opacity: 1;
-    transform: none;
+    opacity:1;
+    transform:none;
   }
 }
 </style>
@@ -1035,31 +739,23 @@ button, input {
 
 <body>
 
-<!-- NAVIGATION -->
-<header class="nav" id="navbar">
-  <div class="wrap nav-inner">
-
-    <a class="logo" href="#home">
-      NEX<span>O</span>RA
-    </a>
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="logo">NEX<span>ORA.</span></a>
 
     <nav class="nav-links" id="navLinks">
-      <a href="#features">Fitur</a>
-      <a href="#how">Cara kerja</a>
-      <a href="#story">Cerita</a>
+      <a href="#features">Features</a>
+      <a href="#showcase">Showcase</a>
+      <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </nav>
 
-    <div class="nav-actions">
-      <button class="btn btn-primary" data-open-modal>
-        Mulai gratis <span class="arrow">↗</span>
-      </button>
+    <button class="btn btn-primary nav-cta" onclick="openModal()">
+      Get Started ↗
+    </button>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Buka menu">
-        ☰
-      </button>
-    </div>
-
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
   </div>
 </header>
 
@@ -1067,324 +763,279 @@ button, input {
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="wrap hero-grid">
-
-    <div class="hero-copy">
-
-      <span class="eyebrow">
-        Your space. Your momentum.
-      </span>
+  <div class="container">
+    <div class="hero-content reveal">
+      <div class="eyebrow"><span class="dot"></span> THE NEXT DIGITAL EXPERIENCE</div>
 
       <h1>
-        Make room<br>
-        for what <span class="gradient">matters.</span>
+        Think Beyond.<br>
+        <span class="gradient-text">Build What's Next.</span>
       </h1>
 
-      <p>
-        Ide, rencana, dan pekerjaan sering tersebar di banyak tempat.
-        NEXORA menyatukannya dalam satu ruang digital agar kamu
-        bisa fokus pada hal yang benar-benar penting.
+      <p class="hero-description">
+        Discover a smarter way to work, create, and innovate.
+        NEXORA brings powerful technology and intuitive design
+        together to move your ideas forward.
       </p>
 
-      <div class="hero-cta">
-        <button class="btn btn-primary" data-open-modal>
-          Jelajahi NEXORA <span class="arrow">↗</span>
-        </button>
-
-        <a class="btn btn-ghost" href="#features">
-          Kenali platform <span class="arrow">↓</span>
-        </a>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="openModal()">Start Exploring ↗</button>
+        <a href="#showcase" class="btn btn-outline">Discover More ↓</a>
       </div>
 
-      <div class="micro-proof">
-        <div class="avatars">
-          <i></i><i></i><i></i><i></i>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <strong>10K+</strong>
+          <span>Potential Users</span>
         </div>
-        <span>
-          Dirancang untuk cara kerja yang lebih jernih.
-        </span>
+        <div class="meta-item">
+          <strong>99.9%</strong>
+          <span>Platform Uptime*</span>
+        </div>
+        <div class="meta-item">
+          <strong>24/7</strong>
+          <span>Digital Access</span>
+        </div>
       </div>
-
-    </div>
-
-    <div class="visual">
-
-      <div class="orb"></div>
-      <div class="orbit"></div>
-      <div class="orbit two"></div>
-
-      <div class="core">
-        <div class="core-mark">N.</div>
-      </div>
-
-      <div class="float-card card-task">
-        <small>YOUR WORKSPACE</small>
-        <strong>Project overview</strong>
-        <div class="task-line"></div>
-        <small style="display:block;margin-top:9px">
-          72% completed
-        </small>
-      </div>
-
-      <div class="float-card card-stat">
-        <small>FOCUS TIME</small>
-        <strong class="stat-value">04:28:16</strong>
-        <small>Keep your momentum</small>
-      </div>
-
-      <div class="float-card card-note">
-        <small><span class="dot"></span>IN PROGRESS</small>
-        <strong>One thing at a time.</strong>
-        <small>Clarity creates momentum.</small>
-      </div>
-
     </div>
   </div>
-</section>
 
-<!-- TRUST -->
-<section class="trust">
-  <div class="wrap trust-inner">
-
-    <span>A calmer way to move forward</span>
-
-    <div class="trust-logos">
-      <span>FOCUS.</span>
-      <span>CREATE+</span>
-      <span>FLOWSTATE</span>
-      <span>DAYFORM</span>
-    </div>
-
+  <div class="orbit" id="orbit">
+    <div class="orbit-core"></div>
   </div>
 </section>
 
 <!-- FEATURES -->
-<section class="section" id="features">
-  <div class="wrap">
-
-    <div class="section-head reveal">
-      <span class="eyebrow">Everything in its place</span>
-
-      <h2>
-        Less scattered.<br>
-        <span style="color:#80aaff">More intentional.</span>
-      </h2>
-
-      <p>
-        NEXORA mengubah kumpulan aktivitas digital menjadi
-        alur yang lebih sederhana. Semua yang kamu butuhkan,
-        tanpa keramaian yang tidak perlu.
+<section class="features" id="features">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">01 — WHAT WE OFFER</div>
+      <h2 class="section-title">Technology that moves with your ambition.</h2>
+      <p class="section-description">
+        Powerful capabilities designed to simplify complexity
+        and unlock new possibilities.
       </p>
     </div>
 
     <div class="feature-grid">
-
-      <article class="feature reveal">
-        <div class="feature-icon">⌘</div>
-        <h3>One clear workspace</h3>
-        <p>
-          Satukan catatan, daftar tugas, dan proyek dalam
-          satu tampilan yang mudah dipahami. Tidak perlu
-          berpindah-pindah aplikasi untuk melihat gambaran besarnya.
-        </p>
+      <article class="feature-card reveal">
+        <div class="feature-icon">✧</div>
+        <h3>Intelligent Systems</h3>
+        <p>Smart digital capabilities that help you make better decisions and work more efficiently.</p>
       </article>
 
-      <article class="feature reveal">
-        <div class="feature-icon">◉</div>
-        <h3>Focus by design</h3>
-        <p>
-          Atur prioritas, pecah pekerjaan menjadi langkah kecil,
-          dan sisihkan ruang untuk fokus. Bangun ritme kerja
-          yang realistis dan berkelanjutan.
-        </p>
+      <article class="feature-card reveal delay-1">
+        <div class="feature-icon">◈</div>
+        <h3>Seamless Experience</h3>
+        <p>A carefully designed experience that makes complex workflows feel intuitive.</p>
       </article>
 
-      <article class="feature reveal">
+      <article class="feature-card reveal delay-2">
         <div class="feature-icon">↗</div>
-        <h3>Progress you can see</h3>
-        <p>
-          Lihat perkembanganmu dari waktu ke waktu. Kenali
-          apa yang sudah selesai, apa yang tertunda,
-          dan langkah berikutnya yang paling masuk akal.
-        </p>
+        <h3>Built to Scale</h3>
+        <p>Flexible technology designed to grow alongside your projects, ideas, and ambitions.</p>
       </article>
-
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="section workflow" id="how">
-  <div class="wrap">
+<!-- SHOWCASE -->
+<section id="showcase">
+  <div class="container">
+    <div class="section-label reveal">02 — THE EXPERIENCE</div>
+    <h2 class="section-title reveal">Less complexity. More possibilities.</h2>
 
-    <div class="section-head reveal">
-      <span class="eyebrow">A simpler system</span>
+    <div class="showcase-layout">
+      <div class="showcase-visual reveal">
+        <div class="dashboard">
+          <div class="dash-top">
+            <span>NEXORA / OVERVIEW</span>
+            <span>LIVE SYSTEM</span>
+          </div>
+          <div class="dash-stat">
+            <div>
+              <small>Performance</small>
+              <strong>+84.6%</strong>
+            </div>
+            <div>
+              <small>Efficiency</small>
+              <strong>96.2%</strong>
+            </div>
+          </div>
+          <div class="chart">
+            <span style="height:30%"></span>
+            <span style="height:45%"></span>
+            <span style="height:38%"></span>
+            <span style="height:65%"></span>
+            <span style="height:55%"></span>
+            <span style="height:80%"></span>
+            <span style="height:70%"></span>
+            <span style="height:95%"></span>
+          </div>
+        </div>
+      </div>
 
-      <h2>
-        Start clear.<br>
-        Stay in motion.
-      </h2>
+      <div class="reveal delay-1">
+        <div class="section-label">A NEW PERSPECTIVE</div>
+        <h2 class="section-title">Designed for the way you think.</h2>
+        <p class="section-description">
+          We believe great technology should feel effortless.
+          Every detail is built around clarity, speed, and
+          meaningful interaction.
+        </p>
 
-      <p>
-        Mulai dari hal sederhana. NEXORA membantumu
-        membangun sistem yang terasa ringan untuk digunakan
-        setiap hari.
+        <div class="story-points">
+          <div class="story-item">
+            <div class="story-number">01</div>
+            <div>
+              <h3>Discover</h3>
+              <p>Find the tools and insights you need in one place.</p>
+            </div>
+          </div>
+
+          <div class="story-item">
+            <div class="story-number">02</div>
+            <div>
+              <h3>Create</h3>
+              <p>Turn ideas into meaningful digital experiences.</p>
+            </div>
+          </div>
+
+          <div class="story-item">
+            <div class="story-number">03</div>
+            <div>
+              <h3>Accelerate</h3>
+              <p>Move forward with a more intelligent workflow.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">03 — SIMPLE PRICING</div>
+      <h2 class="section-title">Choose your next step.</h2>
+      <p class="section-description">
+        Flexible plans designed for different stages of growth.
       </p>
     </div>
 
-    <div class="steps">
-
-      <article class="step reveal">
-        <div class="step-number">01</div>
-        <h3>Bring it together</h3>
-        <p>
-          Tuangkan ide, catatan, dan hal yang perlu
-          dikerjakan ke dalam satu ruang.
-        </p>
-      </article>
-
-      <article class="step reveal">
-        <div class="step-number">02</div>
-        <h3>Find your next move</h3>
-        <p>
-          Tentukan prioritas dan ubah tujuan besar
-          menjadi langkah yang bisa dimulai sekarang.
-        </p>
-      </article>
-
-      <article class="step reveal">
-        <div class="step-number">03</div>
-        <h3>Build your momentum</h3>
-        <p>
-          Kerjakan satu per satu, tinjau progres,
-          lalu sesuaikan rencana saat diperlukan.
-        </p>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- BRAND STATEMENT -->
-<section class="section" id="story">
-  <div class="wrap">
-
-    <div class="quote-box reveal">
-
-      <div class="quote-mark">“</div>
-
-      <blockquote>
-        “Produktivitas bukan tentang memenuhi setiap menit.
-        Ini tentang memberi perhatian pada hal yang memang
-        layak mendapatkannya.”
-      </blockquote>
-
-      <div class="quote-person">
-        <strong>Prinsip NEXORA</strong>
-        Clarity over complexity
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <h3>Starter</h3>
+        <div class="price">Free</div>
+        <div class="period">For getting started</div>
+        <ul>
+          <li>Core features</li>
+          <li>Basic dashboard</li>
+          <li>Community access</li>
+          <li>Standard support</li>
+        </ul>
+        <button class="btn btn-outline" onclick="openModal()">Get Started</button>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section" id="faq">
-  <div class="wrap">
-
-    <div class="section-head reveal">
-      <span class="eyebrow">Good to know</span>
-      <h2>Questions, clarified.</h2>
-      <p>
-        Beberapa hal yang perlu kamu ketahui sebelum memulai.
-      </p>
-    </div>
-
-    <div class="faq-wrap reveal">
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Apa itu NEXORA?
-          <span>+</span>
-        </button>
-        <div class="faq-a">
-          <p>
-            NEXORA adalah konsep platform ruang kerja digital
-            yang dirancang untuk membantu pengguna mengelola ide,
-            tugas, dan proyek dalam satu tempat.
-          </p>
-        </div>
+      <div class="price-card featured reveal delay-1">
+        <div class="section-label">MOST POPULAR</div>
+        <h3>Professional</h3>
+        <div class="price">$19</div>
+        <div class="period">Per month · Example price</div>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Advanced capabilities</li>
+          <li>Priority support</li>
+          <li>Extended integrations</li>
+        </ul>
+        <button class="btn btn-primary" onclick="openModal()">Choose Professional</button>
       </div>
 
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Apakah NEXORA cocok untuk pemula?
-          <span>+</span>
-        </button>
-        <div class="faq-a">
-          <p>
-            Ya. Pendekatannya dibuat sederhana: kumpulkan hal
-            yang perlu dikelola, tentukan prioritas,
-            lalu kerjakan secara bertahap.
-          </p>
-        </div>
+      <div class="price-card reveal delay-2">
+        <h3>Enterprise</h3>
+        <div class="price">Custom</div>
+        <div class="period">For larger organizations</div>
+        <ul>
+          <li>Custom solutions</li>
+          <li>Dedicated assistance</li>
+          <li>Advanced security</li>
+          <li>Flexible integrations</li>
+        </ul>
+        <button class="btn btn-outline" onclick="openModal()">Contact Sales</button>
       </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Apakah NEXORA sudah tersedia?
-          <span>+</span>
-        </button>
-        <div class="faq-a">
-          <p>
-            Halaman ini merupakan konsep landing page dan
-            prototipe identitas brand. Fitur produk, akun pengguna,
-            dan layanan backend belum diimplementasikan.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Bagaimana cara mendapatkan informasi peluncuran?
-          <span>+</span>
-        </button>
-        <div class="faq-a">
-          <p>
-            Gunakan tombol Mulai gratis untuk mengisi formulir
-            minat pada prototipe ini. Formulir saat ini hanya
-            menampilkan konfirmasi di browser dan belum
-            mengirim data ke server.
-          </p>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="final-cta">
-  <div class="wrap">
-
-    <div class="cta-panel reveal">
-
-      <span class="eyebrow">Make your next move</span>
-
-      <h2>
-        Your ideas deserve<br>
-        a better space.
-      </h2>
-
+<section>
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="section-label">YOUR NEXT CHAPTER STARTS HERE</div>
+      <h2>Ready to move beyond?</h2>
       <p>
-        Mulai dengan lebih jernih. Susun hal yang penting.
-        Bergerak dengan tujuan.
+        Start exploring a smarter digital experience.
+        Your next idea deserves the right tools.
       </p>
+      <button class="btn btn-primary" onclick="openModal()">Get Started Today ↗</button>
+    </div>
+  </div>
+</section>
 
-      <button class="btn btn-primary" data-open-modal>
-        Gabung daftar minat <span class="arrow">↗</span>
-      </button>
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <div class="section-label">04 — FAQ</div>
+      <h2 class="section-title" style="margin:auto">Questions, answered.</h2>
+    </div>
 
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question">
+          What is NEXORA?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          NEXORA is a conceptual digital technology platform designed to
+          help individuals and businesses work more efficiently.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is there a free plan?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Yes. The example pricing structure includes a free Starter plan.
+          Actual availability depends on the final product.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I use NEXORA on mobile?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          The website is designed to adapt to mobile phones, tablets,
+          and desktop screens.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I get started?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Click any Get Started button and submit the contact form.
+          The current demonstration does not send data to a server.
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1392,248 +1043,133 @@ button, input {
 </main>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="wrap footer-inner">
-
-    <a class="logo" href="#home">
-      NEX<span>O</span>RA
-    </a>
-
-    <span>
-      © <span id="year"></span> NEXORA.
-      A concept built for clarity.
-    </span>
-
-    <div class="footer-links">
-      <a href="#features">Fitur</a>
-      <a href="#how">Cara kerja</a>
-      <a href="#faq">FAQ</a>
-      <a href="#home">Kembali ke atas ↑</a>
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#home" class="logo">NEX<span>ORA.</span></a>
+      <div class="footer-links">
+        <a href="#features">Features</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#home">Back to top ↑</a>
+      </div>
     </div>
-
+    <div class="copyright">
+      © 2026 NEXORA. All rights reserved.
+      Concept website. *Illustrative metrics only.
+    </div>
   </div>
 </footer>
 
 <!-- MODAL -->
-<div class="modal-backdrop" id="modal"
-     role="dialog" aria-modal="true"
-     aria-labelledby="modalTitle">
+<div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal()" aria-label="Close">&times;</button>
+    <h2 id="modalTitle">Let's get started.</h2>
+    <p>Leave your details and we'll be in touch.</p>
 
-  <div class="modal">
-
-    <button class="modal-close" id="closeModal"
-            aria-label="Tutup">×</button>
-
-    <span class="eyebrow">Stay in the loop</span>
-
-    <h3 id="modalTitle">Be first to know.</h3>
-
-    <p>
-      Masukkan email untuk mencoba alur daftar minat
-      pada prototipe NEXORA.
-    </p>
-
-    <form id="interestForm">
-
-      <input
-        id="email"
-        type="email"
-        placeholder="nama@email.com"
-        aria-label="Alamat email"
-        required
-      >
-
-      <button class="btn btn-primary" type="submit">
-        Lanjut ↗
-      </button>
-
+    <form id="contactForm">
+      <input type="text" placeholder="Your name" required>
+      <input type="email" placeholder="Email address" required>
+      <button class="btn btn-primary" type="submit">Submit Request ↗</button>
     </form>
-
-    <div class="form-message" id="formMessage"
-         aria-live="polite"></div>
-
+    <p id="formMessage" style="margin-top:15px"></p>
   </div>
 </div>
 
-<!-- JAVASCRIPT -->
 <script>
-
-const navbar = document.getElementById('navbar');
+// MOBILE NAVIGATION
+const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
-const menuBtn = document.getElementById('menuBtn');
 
-const modal = document.getElementById('modal');
-const emailInput = document.getElementById('email');
-const formMessage = document.getElementById('formMessage');
-
-document.getElementById('year').textContent =
-  new Date().getFullYear();
-
-// NAVBAR SCROLL
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle(
-    'scrolled',
-    window.scrollY > 20
-  );
-}, { passive: true });
-
-// MOBILE MENU
-menuBtn.addEventListener('click', () => {
-
-  const open = navLinks.classList.toggle('open');
-
-  menuBtn.setAttribute(
-    'aria-expanded',
-    String(open)
-  );
-
-  menuBtn.textContent = open ? '×' : '☰';
-
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  menuToggle.textContent = navLinks.classList.contains('active') ? '×' : '☰';
 });
 
-navLinks.querySelectorAll('a').forEach(a => {
-
-  a.addEventListener('click', () => {
-
-    navLinks.classList.remove('open');
-
-    menuBtn.setAttribute(
-      'aria-expanded',
-      'false'
-    );
-
-    menuBtn.textContent = '☰';
-
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    menuToggle.textContent = '☰';
   });
-
 });
 
 // SCROLL REVEAL
-const observer = new IntersectionObserver(
-  entries => {
-
-    entries.forEach(entry => {
-
-      if (entry.isIntersecting) {
-
-        entry.target.classList.add('visible');
-
-        observer.unobserve(entry.target);
-
-      }
-
-    });
-
-  },
-  { threshold: 0.12 }
-);
-
-document.querySelectorAll('.reveal').forEach(el => {
-  observer.observe(el);
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12,
+  rootMargin: '0px 0px -40px 0px'
 });
 
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// SUBTLE PARALLAX
+const orbit = document.getElementById('orbit');
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      orbit.style.marginTop = `${y * 0.12}px`;
+      orbit.style.opacity = Math.max(.1, 1 - y / 850);
+    }
+  }, {passive:true});
+}
+
 // FAQ ACCORDION
-document.querySelectorAll('.faq-q').forEach(button => {
-
+document.querySelectorAll('.faq-question').forEach(button => {
   button.addEventListener('click', () => {
-
     const item = button.parentElement;
+    const wasActive = item.classList.contains('active');
 
-    const wasOpen = item.classList.contains('open');
-
-    document.querySelectorAll('.faq-item').forEach(row => {
-
-      row.classList.remove('open');
-
-      row.querySelector('.faq-q').setAttribute(
-        'aria-expanded',
-        'false'
-      );
-
+    document.querySelectorAll('.faq-item').forEach(el => {
+      el.classList.remove('active');
+      el.querySelector('.faq-question span').textContent = '+';
     });
 
-    if (!wasOpen) {
-
-      item.classList.add('open');
-
-      button.setAttribute(
-        'aria-expanded',
-        'true'
-      );
-
+    if (!wasActive) {
+      item.classList.add('active');
+      button.querySelector('span').textContent = '−';
     }
-
   });
-
 });
 
 // MODAL
+const modal = document.getElementById('contactModal');
+
 function openModal() {
-
-  modal.classList.add('show');
-
-  formMessage.textContent = '';
-
-  setTimeout(() => emailInput.focus(), 80);
-
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
-
-  modal.classList.remove('show');
-
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
 }
 
-document.querySelectorAll('[data-open-modal]').forEach(button => {
-
-  button.addEventListener('click', openModal);
-
+modal.addEventListener('click', e => {
+  if (e.target === modal) closeModal();
 });
 
-document.getElementById('closeModal').addEventListener(
-  'click',
-  closeModal
-);
-
-modal.addEventListener('click', event => {
-
-  if (event.target === modal) {
-    closeModal();
-  }
-
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
 });
 
-document.addEventListener('keydown', event => {
-
-  if (event.key === 'Escape') {
-    closeModal();
-  }
-
+// DEMO FORM
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('formMessage').textContent =
+    'Thank you! This is a demo form. Connect a backend to receive submissions.';
+  document.getElementById('formMessage').style.color = '#52d8ff';
+  e.target.reset();
 });
-
-// EMAIL FORM
-document.getElementById('interestForm').addEventListener(
-  'submit',
-  event => {
-
-    event.preventDefault();
-
-    if (!emailInput.checkValidity()) {
-
-      emailInput.reportValidity();
-
-      return;
-
-    }
-
-    formMessage.textContent =
-      'Terima kasih. Ini masih prototipe—email belum dikirim atau disimpan.';
-
-    emailInput.value = '';
-
-  }
-);
-
 </script>
 
 </body>
